@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+
+% Useful packages
+\usepackage{minted}
+\usepackage{graphicx}
+\graphicspath{{./media/}}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{siunitx}
+
+
+\title{\vspace{-2cm} Θεμελειώσεις Κρυπτογραφίας \\
+        Homework 1}
+\author{Μαρινόπουλος Χριστόφορος 10522}
+\date{Εαρινό εξάμηνο 2025}
+
+\lhead{Homework1}
+\chead{Θεμελειώσεις Κρυπτογραφίας}
+\rhead{Μαρινόπουλος Χριστόφορος}
+\begin{document}
+\maketitle
+
+\section*{Εκφώνηση}
+Έστω το Eλληνικό αλφάβητο {α,β,γ,…,ω}. Δίνουμε διαδοχικά τιμές
+α:0,β:1,…,ω:24. To κρυπτοσύστημα μετατόπισης π.χ. με κλειδί k=3, ορίζεται
+E(k,α)=(0+3)mod 24 = 3→δ. Δηλ. Αν το κλειδί είναι k με 0<=k<=23, τότε
+Ε(k,X)=(αριθμητική τιμή του X + k)mod 24, ενώ η αποκρυπτογράφηση
+D(k,Y)=(αριθμητική τιμή του Y - k)mod 24
+Αν έχουμε να κρυπτογραφήσουμε μια λέξη εφαρμόζουμε την κρυπτογράφηση σε κάθε γράμμα
+ξεχωριστά.
+
+\subsection*{Ερώτημα 1}
+Έστω ότι έχουμε την παρακάτω κατανομή επί του χώρου μηνυμάτων
+Pr[M=’α’]=0.7, Pr[M=’ω’]=0.3.
+Να υπολογιστεί η πιθανότητα Pr[C=’β’].
+
+\subsection*{Απάντηση}
+Ορίζω το σύνολο:
+\begin{equation*}
+L = \{ x \in \mathbb{N} \mid 1 \leq x \leq 23 \}
+\end{equation*}
+\newline
+Για να κρυπτογραφηθεί το μήνυμα α:0 στο μήνυμα β:1 πρέπει να υπάρχει $ k \, \epsilon \, L $ τέτοιο ώστε: 
+$$
+(0 + \text{k})mod24 = 1 \Rightarrow k = 1  
+$$
+Αντίστοιχα, για να κρυπτογραφηθεί το μήνυμα ω:23 στο μήνυμα β:1 πρέπει  να υπάρχει $ k \, \epsilon \, L $ τέτοιο ώστε:
+$$
+(23 + \text{k})mod 24 = 1 \Rightarrow k = 2 
+$$
+Άρα, το γράμμα β μπορεί να προκύψει εάν το αρχικό γράμμα ήταν είτε α είτε ω, με κλειδιά k=1 και k=2 αντίστοιχα. 
+
+Συνεπώς η πιθανότητα Pr[C = \text{β}] είναι:
+$$
+Pr[C = \text{β}] = Pr[M = \text{α}] * Pr[k = 1] + Pr[M = \text{ω}] * Pr[k = 2]
+$$
+Θεωρώντας πως η κατανομή Κ είναι ομοιόμορφη προκύπτει:
+$$
+Pr[k = 1] = Pr[k = 2] = \frac{1}{24}
+$$
+Με αντικατάσταση καταλήγουμε πως:
+$$
+Pr[C = \text{β}] =0.7 * \frac{1}{24} + 0.3 * \frac{1}{24} = \frac{1}{24}
+$$
+\hfill \blacksquare
+\newpage
+\subsection*{Ερώτημα 2}
+Έστω ότι έχουμε την παρακάτω κατανομή επί του χώρου μηνυμάτων
+Pr[M=’ενα’]=0.3, Pr[M=’δυο’]=0.7.
+Να υπολογιστεί η πιθανότητα Pr[C=’θπδ’].
+
+\subsection*{Απάντηση}
+Ορίζω το σύνολο:
+\begin{equation*}
+L = \{ x \in \mathbb{N} \mid 1 \leq x \leq 23 \}
+\end{equation*}
+\newline
+Για να κρυπτογραφηθεί το μήνυμα ενα στο μήνυμα θπδ πρέπει να υπάρχει $ k \, \epsilon \, L $ τέτοιο ώστε να ικανοποιούνται οι ακόλουθες σχέσεις ταυτόχρονα:
+
+\begin{equation*}
+\begin{array}{ccc}
+\begin{aligned}
+(4 + k) \mod 24 &= 7 \\
+(12 + k) \mod 24 &= 15 \\
+(0 + k) \mod 24 &= 3
+\end{aligned}
+& \Rightarrow &
+k = 3
+\end{array}
+\end{equation*}
+Για να κρυπτογραφηθεί το μήνυμα δύο στο μήνυμα θπδ πρέπει να υπάρχει $ k \, \epsilon \, L $ τέτοιο ώστε να ικανοποιούνται οι ακόλουθες σχέσεις ταυτόχρονα:
+
+\begin{equation*} \label{eq:2}
+\begin{aligned}
+(3 + k) \mod 24 &= 7 \\
+(19 + k) \mod 24 &= 15 \\
+(14 + k) \mod 24 &= 3
+\end{aligned}
+\end{equation*}
+Προφανώς δεν υπάρχει $ k \, \epsilon \, L $ τέτοιο ώστε να ικανοποιούνται ταυτόχρονα οι παραπάνω σχέσεις. Επομένως με αυτή την μέθοδο κρυπτογράφησης το μήνυμα δυο δεν μπορεί να κρυπτογραφηθεί στο θπδ.
+\newline
+\newline
+Θεωρώντας πως η κατανομή Κ είναι ομοιόμορφη προκύπτει:
+$$
+Pr[k = 3] = \frac{1}{24}
+$$
+Συνεπώς:
+$$
+Pr[C = \text{θπδ}] = Pr[M = \text{ενα}] * Pr[k = 3] = 0.3 * \frac{1}{24} = 1/80
+$$
+\hfill \blacksquare
+\end{document}
