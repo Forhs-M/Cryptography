@@ -1,0 +1,191 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+
+% Useful packages
+\usepackage{minted}
+\usepackage{graphicx}
+\graphicspath{{./media/}}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{siunitx}
+ 
+% Change "Table" to "Πίνακας"
+\renewcommand{\tablename}{Πίνακας}
+
+\title{\vspace{-2cm} Θεμελιώσεις Κρυπτογραφίας \\
+        Project 1}
+\author{Μαρινόπουλος Χριστόφορος 10522}
+\date{Εαρινό εξάμηνο 2025}
+
+\lhead{Project 1}
+\chead{Θεμελιώσεις Κρυπτογραφίας}
+\rhead{Μαρινόπουλος Χριστόφορος}
+
+
+\begin{document}
+\maketitle
+\renewcommand{\contentsname}{Περιεχόμενα}
+\tableofcontents
+\newpage
+\section*{Άσκηση 1}
+\addcontentsline{toc}{section}{Άσκηση 1}
+Το επόμενο κρυπτόγραμμα έχει ληφθεί:
+\begin{center}
+\textbf{οκηθμφδζθγοθχυκχσφθμφμχγ}
+\end{center}
+Ο αλγόριθμος κρυπτογράφησης είναι ο εξής: Κάθε γράμμα του αρχικού μας μηνύματος αντικαθίσταται από την αριθμητική του τιμή (α → 1, ..., ω → 24). Ας είναι \( x_0 \) μία ρίζα του τριωνύμου \( g(x) = x^2 + 3x + 1 \). Σε κάθε αριθμό του μηνύματός μου προσθέτω την τιμή του πολυωνύμου \( f(x) = x^5 + 3x^3 + 7x^2 + 3x^4 + 5x + 4 \), στο \( x_0 \). Αντικαθιστώ κάθε αριθμό με το αντίστοιχο γράμμα. Βρείτε το αρχικό μήνυμα.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+
+\section*{Άσκηση 2}
+\addcontentsline{toc}{section}{Άσκηση 2}
+Αποκρυπτογραφήστε το κείμενο  
+\textcolor{blue}{\href{https://github.com/drazioti/book_crypto/blob/master/symmetric_crypto/vigenere}{[2]}} που κρυπτογραφήθηκε με τον αλγόριθμο του Vigen\`ere.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 3}
+\addcontentsline{toc}{section}{Άσκηση 3}
+Έστω ένα μήνυμα \( m \), 16-bits. Θεωρούμε την κυκλική κύλιση προς τα αριστερά \( \ll {\alpha} \)
+κατά \( \alpha \) bits.
+
+Έστω ότι το \( m \) κωδικοποιείται στο \( c \) σύμφωνα με τον τύπο:
+\[
+c = m \oplus (m \ll 6) \oplus (m \ll 10)
+\]
+Βρείτε τον τύπο αποκωδικοποίησης. Δηλαδή, γράψτε το \( m \) ως συνάρτηση του \( c \). Υλοποιήστε κατάλληλο κώδικα, για να δείξετε ότι ο τύπος που φτιάξατε είναι σωστός.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+
+
+\newpage
+\section*{Άσκηση 4}
+\addcontentsline{toc}{section}{Άσκηση 4}
+Υλοποιήστε τον OTP, αφού αρχικά μετατρέψετε το μήνυμά σας σε bits με χρήση του παρακάτω πίνακα. Θα πρέπει να δουλεύουν η κρυπτογράφηση και η αποκρυπτογράφηση. Το μήνυμα δίνεται κανονικά και εσωτερικά μετατρέπεται σε bits. Το κλειδί είναι διαλεγμένο τυχαία και έχει μήκος όσο το μήκος του μηνύματός σας. Το αποτέλεσμα δίνεται όχι σε bits, αλλά με λατινικούς χαρακτήρες.
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \caption{Κωδικοποίηση 5 bits}
+    \label{πίνακας 1}
+    \begin{tabular}{|c c c|c c c|}
+        \hline
+        (0) & A  & : 00000  & (13) & N  & : 01101  \\
+        (1) & B  & : 00001  & (14) & O  & : 01110  \\
+        (2) & C  & : 00010  & (15) & P  & : 01111  \\
+        (3) & D  & : 00011  & (16) & Q  & : 10000  \\
+        (4) & E  & : 00100  & (17) & R  & : 10001  \\
+        (5) & F  & : 00101  & (18) & S  & : 10010  \\
+        (6) & G  & : 00110  & (19) & T  & : 10011  \\
+        (7) & H  & : 00111  & (20) & U  & : 10100  \\
+        (8) & I  & : 01000  & (21) & V  & : 10101  \\
+        (9) & J  & : 01001  & (22) & W  & : 10110  \\
+        (10) & K  & : 01010  & (23) & X  & : 10111  \\
+        (11) & L  & : 01011  & (24) & Y  & : 11000  \\
+        (12) & M  & : 01100  & (25) & Z  & : 11001  \\
+        (26) & .  & : 11010  & (27) & !  & : 11011  \\
+        (28) & ?  & : 11100  & (29) & (  & : 11101  \\
+        (30) & )  & : 11110  & (31) & -  & : 11111  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 5}
+\addcontentsline{toc}{section}{Άσκηση 5}
+Έστω \( m = 2^{10} \), \( c = 3 \) και \( a = 5 \). Ας είναι \( f(x) = (ax + c) \mod m \).
+Διαλέξτε έναν ακέραιο \( x_0 \neq 0 \) και υπολογίστε τους 150 πρώτους ακεραίους της ακολουθίας:
+\( x_1 = f(x_0) \) και \( x_{i+1} = f(x_i), \quad i > 0 \).
+Εξετάστε τις συχνότητες εμφάνισης της λίστας των αριθμών που βρήκατε και κάντε ένα ιστόγραμμα συχνοτήτων. Πλησιάζει την ομοιόμορφη κατανομή;
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 6}
+\addcontentsline{toc}{section}{Άσκηση 6}
+Θεωρούμε το LFSR με πολυώνυμο ανάδρασης \( x^{10} + x^9 + x^7 + x^6 + 1 \). 
+Επίσης, δίνεται η κρυπτογράφηση του μηνύματος \( ab \), \( \text{Enc}(ab) = sq \)
+(δηλαδή, η εφαρμογή του LFSR με είσοδο \( ab \), όταν μετατραπούν σε bits, σύμφωνα με τον παρακάτω πίνακα, δίνουν ως έξοδο \( sq \)). 
+Ένα μήνυμα, που επίσης έχει κωδικοποιηθεί σύμφωνα με τον παρακάτω πίνακα, έχει δώσει την κρυπτογράφηση:
+
+\begin{center}
+    \textbf{i!))aiszwykqnfcyc!?secnncvch}
+\end{center}
+
+Χρησιμοποιήστε τον \textbf{\protect\hyperref[πίνακας 1]{Πίνακα 1}}.
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 7}
+\addcontentsline{toc}{section}{Άσκηση 7}
+Υλοποιήστε τον RC4. Χρησιμοποιώντας το κλειδί \textbf{HOUSE} κρυπτογραφήστε το μήνυμα (ξαναγράψτε το κείμενο χωρίς κενά):
+
+\begin{center}
+\textbf{MISTAKES ARE AS SERIOUS AS THE RESULTS THEY CAUSE}
+\end{center}
+
+Η υλοποίησή σας πρέπει και να αποκρυπτογραφεί σωστά. Χρησιμοποιήστε τον 
+\textbf{\protect\hyperref[πίνακας 1]{Πίνακα 1}}.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 8}
+\addcontentsline{toc}{section}{Άσκηση 8}
+Yπολογίστε τη διαφορική ομοιομορφία του S-box \textbf{\protect\hyperref[sbox 1]{(1)}}.
+\begin{equation}
+\label{sbox 1}
+    S_i =
+    \left[
+    \begin{array}{cccccccccccccccc}
+    0  & 2  & 3  & 7  & 9  & 12 & 15 & 7  & 6  & 15 & 15 & 1  & 7  & 3  & 1  & 0  \\
+    1  & 5  & 6  & 13 & 4  & 1  & 5  & 11 & 7  & 8  & 7  & 1  & 1  & 3  & 2  & 13 \\
+    5  & 3  & 5  & 12 & 11 & 1  & 1  & 5  & 13 & 0  & 15 & 7  & 2  & 2  & 13 & 0  \\
+    3  & 12 & 3  & 11 & 2  & 2  & 2  & 4  & 6  & 5  & 5  & 0  & 4  & 3  & 1  & 0  
+    \end{array}
+    \right]
+\end{equation}
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 9}
+\addcontentsline{toc}{section}{Άσκηση 9}
+Θεωρούμε το \( S \)-κιβώτιο \( S: \{0,1\}^5 \to \{0,1\}^5 \) που παράγεται από τον τύπο \( S(x) = (x^2 + 3) \mod 32 \), όπου \( x \) είναι η δεκαδική παράσταση του δυαδικού. Να υπολογιστεί ο Linear Branch Number του προηγούμενου \( S \) -κιβωτίου.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\section*{Άσκηση 10}
+\addcontentsline{toc}{section}{Άσκηση 10}
+Εξετάστε αν ισχύει το avalanche effect στον AES-128. Αναλυτικότερα, φτιάξτε αρκετά ζευγάρια (\(>30\)) μηνυμάτων \((m_1, m_2)\) που να διαφέρουν σε ένα bit. Εξετάστε σε πόσα bits διαφέρουν τα αντίστοιχα κρυπτομηνύματα. Δοκιμάστε με δύο καταστάσεις λειτουργίας: ECB και CBC (η δεύτερη θέλει και IV block). Τα μήκη των μηνυμάτων που θα χρησιμοποιήσετε να έχουν μήκος διπλάσιο του μήκους ενός block. Δηλαδή για τον AES-128, να είναι μήκους 256 bits.
+
+
+\subsection*{Απάντηση}
+\addcontentsline{toc}{subsection}{Απάντηση}
+
+\end{document}
