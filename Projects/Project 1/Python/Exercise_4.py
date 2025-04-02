@@ -1,6 +1,6 @@
 import random 
 
-alphabet = "ABCDEFGHIJAKLMNOPQRSTUVWXYZ.!/()-"
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.!/()-"
 
 # encode : Encodes the given message according to Table 1 from tex. 
 # mess : String message to be encoded.
@@ -52,4 +52,7 @@ def otp (mess, key_str = None):
 mess = "RA/"
 key = ['10010', '01010', '11100']
 otped = otp(mess,key)
+DKA = "DKA"
+otped2 = otp(DKA,key)
 print(otped)
+print(otped2)
