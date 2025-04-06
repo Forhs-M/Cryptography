@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1cm,right=1cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+
+% Useful packages
+\usepackage{minted}
+\usepackage{graphicx}
+\graphicspath{{./media/}}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multirow}
+
+% Change "Table" to "Πίνακας"
+\renewcommand{\tablename}{Πίνακας}
+
+
+\title{\vspace{-2cm} Θεμελιώσεις Κρυπτογραφίας \\
+        Homework 5}
+\author{Μαρινόπουλος Χριστόφορος 10522}
+\date{Εαρινό εξάμηνο 2025}
+
+\lhead{Homework 5}
+\chead{Θεμελιώσεις Κρυπτογραφίας}
+\rhead{Μαρινόπουλος Χριστόφορος}
+\begin{document}
+\maketitle
+
+\section*{Ερώτημα 1}
+Να εξετάσετε αν ισχύει το φαινόμενο της χιονοστιβάδας
+στην συνάρτηση κατακερματισμού sha256.
+
+\section*{Απάντηση}
+Για την εξέταση του avalance effect θα εξεταστεί αν σε 100 ζευγάρια μηνυμάτων (m1,m2) που διαφέρουν σε ένα bit, η κρυπτογράφηση τους διαφέρει σε ποσοστό  >50\%. Ο κώδικας στο αρχείο \texttt{homework\_5\_10522.py} χρησιμοποιεί την βιβλιοθήκη: \texttt{pycryptodome} την οποία ο χρήστης θα πρέπει να κατεβάσει με την εντολή: \texttt{pip install pycryptodome} στο terminal εάν επιθυμεί να τρέξει τον κώδικα.
+\newline
+\newline
+Σε αυτόν, πρώτα δημιουργείται ένα τυχαίο μήνυμα 512 bits. Μετέπειτα, δημιουργείται ένα δεύτερο το οποίο διαφέρει σε 1 bit με το πρώτο. Τέλος, κρυπτογραφούνται  και γίνεται έλεγχος εάν ο αριθμός των διαφορετικών bits των κρυπτογραφημένων μηνυμάτων είναι \( >256 \). Αυτό επαναλαμβάνεται 100 φορές και αν ο αριθμός των κρυπτογραφημένων μηνυμάτων που διαφέρουν κατά 256 bit είναι μεγαλύτερος από 50, ( περισσότερο από το 50\% του δείγματος) τότε για τον sha 256 ισχύει το Avalance effect.
+\newline
+\newline
+Με την εκτέλεση του κώδικα παρατειρείτε πως ισχύει όντως το avalance effect.
+\end{document}
