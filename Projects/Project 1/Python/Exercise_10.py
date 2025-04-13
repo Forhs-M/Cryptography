@@ -5,7 +5,7 @@ import random
 # bit_flip: Flips a bit from a byte string
 # byte_data: The byte string whose bit will get flipped
 # bit index: Indicates which bit will get flipped from the byte string
-# Returns the byte list with one byte flipped
+# Returns the byte list with one bit flipped
 
 def bit_flip(byte_data, bit_index):
     byte_list = list(byte_data)
@@ -37,7 +37,7 @@ def AvallanceCheck_ECB():
     for i in range(60):
         collisions = 0
         m1 = get_random_bytes(32)
-        m2 = bit_flip(m1, random.randint(0, 127))
+        m2 = bit_flip(m1, random.randint(0, 255))
         key = get_random_bytes(16)
         encrypter = AES.new(key, AES.MODE_ECB)
         c1 = encrypter.encrypt(m1)
@@ -63,12 +63,11 @@ def AvalancheCheck_CBC():
         encrypter2 = AES.new(key, AES.MODE_CBC, iv)
         c2 = encrypter2.encrypt(m2)
         collisions = bit_collisions(c1, c2)
-        print(f"Trial {i+1}: Bit collisions = {collisions}")
         avg_colls += collisions
         if collisions < 128:
             aval += 1
-    print("Average colls", avg_colls/60)
-    return aval / 60
+    print("Average colls in CBC mode:", avg_colls/60)
+    return aval > 30
 
 # Example of using the Check functions
 
@@ -76,4 +75,4 @@ ECB_Check = AvallanceCheck_ECB()
 CBC_Check = AvalancheCheck_CBC()
 
 print("Avalanche check for ECB mode results in: ", ECB_Check)    
-print("Avalanche check for ECB mode results in: ", CBC_Check) 
+print("Avalanche check for CBC mode results in: ", CBC_Check) 
