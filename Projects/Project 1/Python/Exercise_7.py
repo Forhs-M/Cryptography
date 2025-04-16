@@ -1,4 +1,4 @@
-alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.!/()-"
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.!?()-"
 
 # encode : Encodes the given message according to Table 1 from tex. 
 # mess : String message to be encoded.
