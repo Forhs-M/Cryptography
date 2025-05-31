@@ -27,5 +27,5 @@ def trial_division(n):
 
 # Example
 
-test = trial_division(2**62-1)
+test = trial_division(3714089895285)
 print("Prime array", test)  
