@@ -1,6 +1,6 @@
-# is_prime : CHecks if an integer is prime
-# num : Integer
-# Returns true if num is prime else false
+# is_prime : Checks if an integer is prime.
+# num : Integer.
+# Returns true if num is prime else false.
 
 def is_prime(num):
     if num < 2:
@@ -20,5 +20,6 @@ def next_perfect_number(after):
                 return perfect
         p += 1
 
-# Example: Find the next perfect number after 8128
+# Example: Find the next perfect number after 8128.
+
 print(next_perfect_number(8128))

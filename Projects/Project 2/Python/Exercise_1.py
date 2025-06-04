@@ -1,9 +1,10 @@
 import math
 
-# karatsuba: given a and b calculates the product a*b faster
-# a: integer
-# b: integer
-# Returns a*b
+# karatsuba: For given a and b calculates the product a*b faster.
+# a: Integer.
+# b: Integer.
+# Returns a*b.
+
 def karatsuba(a,b):
     if(a <100 or b<100):
         return a*b
@@ -20,10 +21,10 @@ def karatsuba(a,b):
     return result
 
 # fastmod: given base, exp and m calculates (base^exp)%m faster than the calculation of it.
-# base: integer
-# exp: integer
-# m: integer
-# Returns (base^exp)%m 
+# base: Integer.
+# exp: Integer.
+# m: Integer.
+# Returns (base^exp)%m. 
 
 def fastmod(base, exp, m):
     result = 1
@@ -34,14 +35,11 @@ def fastmod(base, exp, m):
         base = base**2 % m
     return result
 
-# Example
+# Example of usage.
 
 res1 = fastmod(2,1000,2**107-1)
 res2 = fastmod(3,101,2**107-1)
 res3 = fastmod(5,47,2**107-1)
 prod_1 = karatsuba(res1,res2)
 result = karatsuba(prod_1,res3)
-print(res1)
-print(res2)
-print(res3)
-print(result)
+print(result%(2**107-1))
