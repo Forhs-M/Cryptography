@@ -42,10 +42,7 @@ def find_s_t(num):
 # Returns the smallest strong sudo prime of given base.
 
 def find_strong_pseudo(base):
-    if base % 2:
-        num = base + 2
-    else:
-        num = base + 1
+    num = 3
     while True:
         if is_prime(num):
             num += 2
