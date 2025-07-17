@@ -53,6 +53,7 @@ def AvallanceCheck_ECB():
 def AvalancheCheck_CBC():
     aval = 0
     avg_colls = 0
+    
     for i in range(60):
         m1 = get_random_bytes(32)
         m2 = bit_flip(m1, random.randint(0, 255))
@@ -60,13 +61,13 @@ def AvalancheCheck_CBC():
         iv = get_random_bytes(16)
         encrypter = AES.new(key, AES.MODE_CBC, iv)
         c1 = encrypter.encrypt(m1)
+        iv = get_random_bytes(16)
         encrypter2 = AES.new(key, AES.MODE_CBC, iv)
         c2 = encrypter2.encrypt(m2)
         collisions = bit_collisions(c1, c2)
         avg_colls += collisions
         if collisions < 128:
             aval += 1
-    print("Average colls in CBC mode:", avg_colls/60)
     return aval > 30
 
 # Example of using the Check functions
